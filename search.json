@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this blog"
+  },
+  {
+    "objectID": "posts/2010-chargers-miss-playoffs/Index.html",
+    "href": "posts/2010-chargers-miss-playoffs/Index.html",
+    "title": "2010 Chargers Miss Playoffs Despite Being No. 1 in Off and Def",
+    "section": "",
+    "text": "2010 Chargers Sold Hard!!\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "2010 Chargers",
+    "section": "",
+    "text": "2010 Chargers Miss Playoffs Despite Being No. 1 in Offense and Deffense\n\n\n\n\n\n\nData Driven Articles\n\n\n\n\n\n\n\n\n\nNov 5, 2024\n\n\nLogan Griffiths\n\n\n\n\n\n\nNo matching items"
+  }
+]
