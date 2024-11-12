@@ -11,7 +11,7 @@
     "href": "posts/2010-chargers-miss-playoffs/Index.html",
     "title": "2010 Chargers Miss Playoffs Despite Being No. 1 in Offense and Deffense",
     "section": "",
-    "text": "DDDDD\n\nlibrary(tidyverse)"
+    "text": "library(tidyverse)"
   },
   {
     "objectID": "index.html",
