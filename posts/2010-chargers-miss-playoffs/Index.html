@@ -215,42 +215,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="fu">md</span>(<span class="st">"Source: [Sports Reference](https://www.pro-football-reference.com/teams/sdg/2010.htm)"</span>)</span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a> <span class="fu">tab_style</span>(</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"green"</span>),</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(<span class="at">columns =</span> <span class="fu">vars</span>(Result), <span class="at">rows =</span> Result <span class="sc">==</span> <span class="st">"Win"</span>)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"red"</span>),</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(<span class="at">columns =</span> <span class="fu">vars</span>(Result), <span class="at">rows =</span> Result <span class="sc">==</span> <span class="st">"Loss"</span>)</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Since gt v0.3.0, `columns = vars(...)` has been deprecated.
-• Please use `columns = c(...)` instead.
-Since gt v0.3.0, `columns = vars(...)` has been deprecated.
-• Please use `columns = c(...)` instead.</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>chargers_schedule_gt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"green3"</span>),</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">locations =</span> <span class="fu">cells_body</span>(<span class="at">columns =</span> <span class="st">"Result"</span>, <span class="at">rows =</span> Result <span class="sc">==</span> <span class="st">"Win"</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_style</span>(</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"red3"</span>),</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">locations =</span> <span class="fu">cells_body</span>(<span class="at">columns =</span> <span class="st">"Result"</span>, <span class="at">rows =</span> Result <span class="sc">==</span> <span class="st">"Loss"</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>chargers_schedule_gt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="nptsxvqbek" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#nptsxvqbek table {
+<div id="ahvumgfdzj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ahvumgfdzj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#nptsxvqbek thead, #nptsxvqbek tbody, #nptsxvqbek tfoot, #nptsxvqbek tr, #nptsxvqbek td, #nptsxvqbek th {
+#ahvumgfdzj thead, #ahvumgfdzj tbody, #ahvumgfdzj tfoot, #ahvumgfdzj tr, #ahvumgfdzj td, #ahvumgfdzj th {
   border-style: none;
 }
 
-#nptsxvqbek p {
+#ahvumgfdzj p {
   margin: 0;
   padding: 0;
 }
 
-#nptsxvqbek .gt_table {
+#ahvumgfdzj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -276,12 +267,12 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
   border-left-color: #D3D3D3;
 }
 
-#nptsxvqbek .gt_caption {
+#ahvumgfdzj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#nptsxvqbek .gt_title {
+#ahvumgfdzj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -293,7 +284,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
   border-bottom-width: 0;
 }
 
-#nptsxvqbek .gt_subtitle {
+#ahvumgfdzj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -305,7 +296,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
   border-top-width: 0;
 }
 
-#nptsxvqbek .gt_heading {
+#ahvumgfdzj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -317,13 +308,13 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
   border-right-color: #D3D3D3;
 }
 
-#nptsxvqbek .gt_bottom_border {
+#ahvumgfdzj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#nptsxvqbek .gt_col_headings {
+#ahvumgfdzj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -338,7 +329,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
   border-right-color: #D3D3D3;
 }
 
-#nptsxvqbek .gt_col_heading {
+#ahvumgfdzj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -358,7 +349,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
   overflow-x: hidden;
 }
 
-#nptsxvqbek .gt_column_spanner_outer {
+#ahvumgfdzj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -370,15 +361,15 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
   padding-right: 4px;
 }
 
-#nptsxvqbek .gt_column_spanner_outer:first-child {
+#ahvumgfdzj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#nptsxvqbek .gt_column_spanner_outer:last-child {
+#ahvumgfdzj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#nptsxvqbek .gt_column_spanner {
+#ahvumgfdzj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -390,11 +381,11 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
   width: 100%;
 }
 
-#nptsxvqbek .gt_spanner_row {
+#ahvumgfdzj .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#nptsxvqbek .gt_group_heading {
+#ahvumgfdzj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -420,7 +411,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
   text-align: left;
 }
 
-#nptsxvqbek .gt_empty_group_heading {
+#ahvumgfdzj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -435,15 +426,15 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
   vertical-align: middle;
 }
 
-#nptsxvqbek .gt_from_md > :first-child {
+#ahvumgfdzj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nptsxvqbek .gt_from_md > :last-child {
+#ahvumgfdzj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nptsxvqbek .gt_row {
+#ahvumgfdzj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -462,7 +453,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
   overflow-x: hidden;
 }
 
-#nptsxvqbek .gt_stub {
+#ahvumgfdzj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -475,7 +466,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
   padding-right: 5px;
 }
 
-#nptsxvqbek .gt_stub_row_group {
+#ahvumgfdzj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -489,15 +480,15 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
   vertical-align: top;
 }
 
-#nptsxvqbek .gt_row_group_first td {
+#ahvumgfdzj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#nptsxvqbek .gt_row_group_first th {
+#ahvumgfdzj .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#nptsxvqbek .gt_summary_row {
+#ahvumgfdzj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -507,16 +498,16 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
   padding-right: 5px;
 }
 
-#nptsxvqbek .gt_first_summary_row {
+#ahvumgfdzj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#nptsxvqbek .gt_first_summary_row.thick {
+#ahvumgfdzj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#nptsxvqbek .gt_last_summary_row {
+#ahvumgfdzj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -526,7 +517,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
   border-bottom-color: #D3D3D3;
 }
 
-#nptsxvqbek .gt_grand_summary_row {
+#ahvumgfdzj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -536,7 +527,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
   padding-right: 5px;
 }
 
-#nptsxvqbek .gt_first_grand_summary_row {
+#ahvumgfdzj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -546,7 +537,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
   border-top-color: #D3D3D3;
 }
 
-#nptsxvqbek .gt_last_grand_summary_row_top {
+#ahvumgfdzj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -556,11 +547,11 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
   border-bottom-color: #D3D3D3;
 }
 
-#nptsxvqbek .gt_striped {
+#ahvumgfdzj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nptsxvqbek .gt_table_body {
+#ahvumgfdzj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -569,7 +560,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
   border-bottom-color: #D3D3D3;
 }
 
-#nptsxvqbek .gt_footnotes {
+#ahvumgfdzj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -583,7 +574,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
   border-right-color: #D3D3D3;
 }
 
-#nptsxvqbek .gt_footnote {
+#ahvumgfdzj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -592,7 +583,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
   padding-right: 5px;
 }
 
-#nptsxvqbek .gt_sourcenotes {
+#ahvumgfdzj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -606,7 +597,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
   border-right-color: #D3D3D3;
 }
 
-#nptsxvqbek .gt_sourcenote {
+#ahvumgfdzj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -614,72 +605,72 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
   padding-right: 5px;
 }
 
-#nptsxvqbek .gt_left {
+#ahvumgfdzj .gt_left {
   text-align: left;
 }
 
-#nptsxvqbek .gt_center {
+#ahvumgfdzj .gt_center {
   text-align: center;
 }
 
-#nptsxvqbek .gt_right {
+#ahvumgfdzj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nptsxvqbek .gt_font_normal {
+#ahvumgfdzj .gt_font_normal {
   font-weight: normal;
 }
 
-#nptsxvqbek .gt_font_bold {
+#ahvumgfdzj .gt_font_bold {
   font-weight: bold;
 }
 
-#nptsxvqbek .gt_font_italic {
+#ahvumgfdzj .gt_font_italic {
   font-style: italic;
 }
 
-#nptsxvqbek .gt_super {
+#ahvumgfdzj .gt_super {
   font-size: 65%;
 }
 
-#nptsxvqbek .gt_footnote_marks {
+#ahvumgfdzj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#nptsxvqbek .gt_asterisk {
+#ahvumgfdzj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#nptsxvqbek .gt_indent_1 {
+#ahvumgfdzj .gt_indent_1 {
   text-indent: 5px;
 }
 
-#nptsxvqbek .gt_indent_2 {
+#ahvumgfdzj .gt_indent_2 {
   text-indent: 10px;
 }
 
-#nptsxvqbek .gt_indent_3 {
+#ahvumgfdzj .gt_indent_3 {
   text-indent: 15px;
 }
 
-#nptsxvqbek .gt_indent_4 {
+#ahvumgfdzj .gt_indent_4 {
   text-indent: 20px;
 }
 
-#nptsxvqbek .gt_indent_5 {
+#ahvumgfdzj .gt_indent_5 {
   text-indent: 25px;
 }
 
-#nptsxvqbek .katex-display {
+#ahvumgfdzj .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#nptsxvqbek div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ahvumgfdzj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -711,7 +702,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
 <td class="gt_row gt_right" headers="Chargers">14</td>
 <td class="gt_row gt_right" headers="Opponent_Score">21</td>
 <td class="gt_row gt_right" headers="Rec">0-1</td>
-<td class="gt_row gt_left" headers="Result" style="color: #FF0000">Loss</td>
+<td class="gt_row gt_left" headers="Result" style="color: #CD0000">Loss</td>
 <td class="gt_row gt_right" headers="Point_Differential">-7</td>
 </tr>
 <tr class="even">
@@ -721,7 +712,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
 <td class="gt_row gt_right" headers="Chargers">38</td>
 <td class="gt_row gt_right" headers="Opponent_Score">13</td>
 <td class="gt_row gt_right" headers="Rec">1-1</td>
-<td class="gt_row gt_left" headers="Result" style="color: #00FF00">Win</td>
+<td class="gt_row gt_left" headers="Result" style="color: #00CD00">Win</td>
 <td class="gt_row gt_right" headers="Point_Differential">25</td>
 </tr>
 <tr class="odd">
@@ -731,7 +722,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
 <td class="gt_row gt_right" headers="Chargers">20</td>
 <td class="gt_row gt_right" headers="Opponent_Score">27</td>
 <td class="gt_row gt_right" headers="Rec">1-2</td>
-<td class="gt_row gt_left" headers="Result" style="color: #FF0000">Loss</td>
+<td class="gt_row gt_left" headers="Result" style="color: #CD0000">Loss</td>
 <td class="gt_row gt_right" headers="Point_Differential">-7</td>
 </tr>
 <tr class="even">
@@ -741,7 +732,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
 <td class="gt_row gt_right" headers="Chargers">41</td>
 <td class="gt_row gt_right" headers="Opponent_Score">10</td>
 <td class="gt_row gt_right" headers="Rec">2-2</td>
-<td class="gt_row gt_left" headers="Result" style="color: #00FF00">Win</td>
+<td class="gt_row gt_left" headers="Result" style="color: #00CD00">Win</td>
 <td class="gt_row gt_right" headers="Point_Differential">31</td>
 </tr>
 <tr class="odd">
@@ -751,7 +742,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
 <td class="gt_row gt_right" headers="Chargers">27</td>
 <td class="gt_row gt_right" headers="Opponent_Score">35</td>
 <td class="gt_row gt_right" headers="Rec">2-3</td>
-<td class="gt_row gt_left" headers="Result" style="color: #FF0000">Loss</td>
+<td class="gt_row gt_left" headers="Result" style="color: #CD0000">Loss</td>
 <td class="gt_row gt_right" headers="Point_Differential">-8</td>
 </tr>
 <tr class="even">
@@ -761,7 +752,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
 <td class="gt_row gt_right" headers="Chargers">17</td>
 <td class="gt_row gt_right" headers="Opponent_Score">20</td>
 <td class="gt_row gt_right" headers="Rec">2-4</td>
-<td class="gt_row gt_left" headers="Result" style="color: #FF0000">Loss</td>
+<td class="gt_row gt_left" headers="Result" style="color: #CD0000">Loss</td>
 <td class="gt_row gt_right" headers="Point_Differential">-3</td>
 </tr>
 <tr class="odd">
@@ -771,7 +762,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
 <td class="gt_row gt_right" headers="Chargers">23</td>
 <td class="gt_row gt_right" headers="Opponent_Score">27</td>
 <td class="gt_row gt_right" headers="Rec">3-4</td>
-<td class="gt_row gt_left" headers="Result" style="color: #FF0000">Loss</td>
+<td class="gt_row gt_left" headers="Result" style="color: #CD0000">Loss</td>
 <td class="gt_row gt_right" headers="Point_Differential">-4</td>
 </tr>
 <tr class="even">
@@ -781,7 +772,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
 <td class="gt_row gt_right" headers="Chargers">33</td>
 <td class="gt_row gt_right" headers="Opponent_Score">25</td>
 <td class="gt_row gt_right" headers="Rec">3-5</td>
-<td class="gt_row gt_left" headers="Result" style="color: #00FF00">Win</td>
+<td class="gt_row gt_left" headers="Result" style="color: #00CD00">Win</td>
 <td class="gt_row gt_right" headers="Point_Differential">8</td>
 </tr>
 <tr class="odd">
@@ -791,7 +782,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
 <td class="gt_row gt_right" headers="Chargers">29</td>
 <td class="gt_row gt_right" headers="Opponent_Score">23</td>
 <td class="gt_row gt_right" headers="Rec">4-5</td>
-<td class="gt_row gt_left" headers="Result" style="color: #00FF00">Win</td>
+<td class="gt_row gt_left" headers="Result" style="color: #00CD00">Win</td>
 <td class="gt_row gt_right" headers="Point_Differential">6</td>
 </tr>
 <tr class="even">
@@ -801,7 +792,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
 <td class="gt_row gt_right" headers="Chargers">35</td>
 <td class="gt_row gt_right" headers="Opponent_Score">14</td>
 <td class="gt_row gt_right" headers="Rec">4-6</td>
-<td class="gt_row gt_left" headers="Result" style="color: #00FF00">Win</td>
+<td class="gt_row gt_left" headers="Result" style="color: #00CD00">Win</td>
 <td class="gt_row gt_right" headers="Point_Differential">21</td>
 </tr>
 <tr class="odd">
@@ -811,7 +802,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
 <td class="gt_row gt_right" headers="Chargers">36</td>
 <td class="gt_row gt_right" headers="Opponent_Score">14</td>
 <td class="gt_row gt_right" headers="Rec">5-6</td>
-<td class="gt_row gt_left" headers="Result" style="color: #00FF00">Win</td>
+<td class="gt_row gt_left" headers="Result" style="color: #00CD00">Win</td>
 <td class="gt_row gt_right" headers="Point_Differential">22</td>
 </tr>
 <tr class="even">
@@ -821,7 +812,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
 <td class="gt_row gt_right" headers="Chargers">13</td>
 <td class="gt_row gt_right" headers="Opponent_Score">28</td>
 <td class="gt_row gt_right" headers="Rec">5-7</td>
-<td class="gt_row gt_left" headers="Result" style="color: #FF0000">Loss</td>
+<td class="gt_row gt_left" headers="Result" style="color: #CD0000">Loss</td>
 <td class="gt_row gt_right" headers="Point_Differential">-15</td>
 </tr>
 <tr class="odd">
@@ -831,7 +822,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
 <td class="gt_row gt_right" headers="Chargers">31</td>
 <td class="gt_row gt_right" headers="Opponent_Score">0</td>
 <td class="gt_row gt_right" headers="Rec">6-7</td>
-<td class="gt_row gt_left" headers="Result" style="color: #00FF00">Win</td>
+<td class="gt_row gt_left" headers="Result" style="color: #00CD00">Win</td>
 <td class="gt_row gt_right" headers="Point_Differential">31</td>
 </tr>
 <tr class="even">
@@ -841,7 +832,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
 <td class="gt_row gt_right" headers="Chargers">34</td>
 <td class="gt_row gt_right" headers="Opponent_Score">7</td>
 <td class="gt_row gt_right" headers="Rec">6-8</td>
-<td class="gt_row gt_left" headers="Result" style="color: #00FF00">Win</td>
+<td class="gt_row gt_left" headers="Result" style="color: #00CD00">Win</td>
 <td class="gt_row gt_right" headers="Point_Differential">27</td>
 </tr>
 <tr class="odd">
@@ -851,7 +842,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
 <td class="gt_row gt_right" headers="Chargers">20</td>
 <td class="gt_row gt_right" headers="Opponent_Score">34</td>
 <td class="gt_row gt_right" headers="Rec">7-8</td>
-<td class="gt_row gt_left" headers="Result" style="color: #FF0000">Loss</td>
+<td class="gt_row gt_left" headers="Result" style="color: #CD0000">Loss</td>
 <td class="gt_row gt_right" headers="Point_Differential">-14</td>
 </tr>
 <tr class="even">
@@ -861,7 +852,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
 <td class="gt_row gt_right" headers="Chargers">20</td>
 <td class="gt_row gt_right" headers="Opponent_Score">23</td>
 <td class="gt_row gt_right" headers="Rec">7-9</td>
-<td class="gt_row gt_left" headers="Result" style="color: #FF0000">Loss</td>
+<td class="gt_row gt_left" headers="Result" style="color: #CD0000">Loss</td>
 <td class="gt_row gt_right" headers="Point_Differential">-3</td>
 </tr>
 <tr class="odd">
@@ -871,7 +862,7 @@ Since gt v0.3.0, `columns = vars(...)` has been deprecated.
 <td class="gt_row gt_right" headers="Chargers">23</td>
 <td class="gt_row gt_right" headers="Opponent_Score">21</td>
 <td class="gt_row gt_right" headers="Rec">8-9</td>
-<td class="gt_row gt_left" headers="Result" style="color: #00FF00">Win</td>
+<td class="gt_row gt_left" headers="Result" style="color: #00CD00">Win</td>
 <td class="gt_row gt_right" headers="Point_Differential">2</td>
 </tr>
 </tbody><tfoot class="gt_sourcenotes">
