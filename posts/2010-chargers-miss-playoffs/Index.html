@@ -194,7 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In this I am creating a data set that calculates offensive yards per play.  </span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this code is  creating a data set that calculates offensive yards per play.  </span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>offensive_yards_per_play <span class="ot">&lt;-</span> pbp <span class="sc">|&gt;</span> </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(posteam)) <span class="sc">|&gt;</span> </span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(posteam) <span class="sc">|&gt;</span> </span>
@@ -203,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">offensive_plays =</span> <span class="fu">n</span>(),</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">offensive_yards_per_play =</span> total_offensive_yards <span class="sc">/</span> offensive_plays</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#In this I am creating a data set that calculates defensive yards per play.</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#this code is creating a data set that calculates defensive yards per play.</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>defensive_yards_per_play <span class="ot">&lt;-</span> pbp <span class="sc">|&gt;</span> </span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(defteam)) <span class="sc">|&gt;</span> </span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(defteam) <span class="sc">|&gt;</span> </span>
@@ -212,7 +212,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">defensive_plays =</span> <span class="fu">n</span>(),</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">defensive_yards_per_play =</span> total_defensive_yards_allowed <span class="sc">/</span> defensive_plays</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  ) </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">#In this I am joining the two data sets to calculate the overall yard per play differential, this metric is designed so we can see who has the best average offensive  and defensive yards combined by subtracting them for the differential.</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">#this code is  joining the two data sets to calculate the overall yard per play differential, this metric is designed so we can see who has the best average offensive  and defensive yards combined by subtracting them for the differential.</span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>yards_per_play_difference <span class="ot">&lt;-</span> offensive_yards_per_play <span class="sc">|&gt;</span> </span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(</span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    defensive_yards_per_play, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"posteam"</span> <span class="ot">=</span> <span class="st">"defteam"</span>)</span>
@@ -383,7 +383,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"How the Chargers' opponent return yards allowed compare to other NFL teams."</span>,</span>
 <span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Team"</span>,</span>
 <span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Punt Yards - Return Yards"</span>,</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"By: Logan Griffiths | Data Source: Sports Reference"</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"By: Logan Griffiths| Sports Reference"</span></span>
 <span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
 <span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
@@ -402,7 +402,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Despite punting only 56 times (the third-fewest attempts) the Chargers still gave up 538 return yards, the fifth-most in the league. The only way that the Chargers could effectively stop their opponent from returning a punt deep was by getting touch backs. Even more concerning they, had four blocked punts, while no other team had more than two; making up 30% of the blocked punts that year.</p>
+<p>Despite punting only 56 times (the third-fewest attempts) the Chargers still gave up 538 return yards, the fifth-most in the league. The only way that the Chargers could effectively stop their opponent from returning a punt deep was by getting touch backs. Even more concerning they, had four blocked punts, while no other team had more than two; making up 30% of the blocked punts that year.<a href="https://www.pro-football-reference.com/years/2010/punting.htm">Sports Reference</a></p>
 <p>So truly what could have been their record if it wasn’t for their awful punting?</p>
 <div class="cell">
 <details class="code-fold">
@@ -466,23 +466,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>chargers_schedule_gt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="itkqcvswqa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#itkqcvswqa table {
+<div id="rxducricqb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rxducricqb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#itkqcvswqa thead, #itkqcvswqa tbody, #itkqcvswqa tfoot, #itkqcvswqa tr, #itkqcvswqa td, #itkqcvswqa th {
+#rxducricqb thead, #rxducricqb tbody, #rxducricqb tfoot, #rxducricqb tr, #rxducricqb td, #rxducricqb th {
   border-style: none;
 }
 
-#itkqcvswqa p {
+#rxducricqb p {
   margin: 0;
   padding: 0;
 }
 
-#itkqcvswqa .gt_table {
+#rxducricqb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -508,12 +508,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#itkqcvswqa .gt_caption {
+#rxducricqb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#itkqcvswqa .gt_title {
+#rxducricqb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -525,7 +525,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#itkqcvswqa .gt_subtitle {
+#rxducricqb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -537,7 +537,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#itkqcvswqa .gt_heading {
+#rxducricqb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -549,13 +549,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#itkqcvswqa .gt_bottom_border {
+#rxducricqb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#itkqcvswqa .gt_col_headings {
+#rxducricqb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -570,7 +570,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#itkqcvswqa .gt_col_heading {
+#rxducricqb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -590,7 +590,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#itkqcvswqa .gt_column_spanner_outer {
+#rxducricqb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -602,15 +602,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#itkqcvswqa .gt_column_spanner_outer:first-child {
+#rxducricqb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#itkqcvswqa .gt_column_spanner_outer:last-child {
+#rxducricqb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#itkqcvswqa .gt_column_spanner {
+#rxducricqb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -622,11 +622,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#itkqcvswqa .gt_spanner_row {
+#rxducricqb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#itkqcvswqa .gt_group_heading {
+#rxducricqb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -652,7 +652,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#itkqcvswqa .gt_empty_group_heading {
+#rxducricqb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -667,15 +667,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#itkqcvswqa .gt_from_md > :first-child {
+#rxducricqb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#itkqcvswqa .gt_from_md > :last-child {
+#rxducricqb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#itkqcvswqa .gt_row {
+#rxducricqb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -694,7 +694,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#itkqcvswqa .gt_stub {
+#rxducricqb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -707,7 +707,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#itkqcvswqa .gt_stub_row_group {
+#rxducricqb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -721,15 +721,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#itkqcvswqa .gt_row_group_first td {
+#rxducricqb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#itkqcvswqa .gt_row_group_first th {
+#rxducricqb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#itkqcvswqa .gt_summary_row {
+#rxducricqb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -739,16 +739,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#itkqcvswqa .gt_first_summary_row {
+#rxducricqb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#itkqcvswqa .gt_first_summary_row.thick {
+#rxducricqb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#itkqcvswqa .gt_last_summary_row {
+#rxducricqb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -758,7 +758,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#itkqcvswqa .gt_grand_summary_row {
+#rxducricqb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -768,7 +768,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#itkqcvswqa .gt_first_grand_summary_row {
+#rxducricqb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -778,7 +778,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#itkqcvswqa .gt_last_grand_summary_row_top {
+#rxducricqb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -788,11 +788,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#itkqcvswqa .gt_striped {
+#rxducricqb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#itkqcvswqa .gt_table_body {
+#rxducricqb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -801,7 +801,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#itkqcvswqa .gt_footnotes {
+#rxducricqb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -815,7 +815,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#itkqcvswqa .gt_footnote {
+#rxducricqb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -824,7 +824,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#itkqcvswqa .gt_sourcenotes {
+#rxducricqb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -838,7 +838,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#itkqcvswqa .gt_sourcenote {
+#rxducricqb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -846,72 +846,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#itkqcvswqa .gt_left {
+#rxducricqb .gt_left {
   text-align: left;
 }
 
-#itkqcvswqa .gt_center {
+#rxducricqb .gt_center {
   text-align: center;
 }
 
-#itkqcvswqa .gt_right {
+#rxducricqb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#itkqcvswqa .gt_font_normal {
+#rxducricqb .gt_font_normal {
   font-weight: normal;
 }
 
-#itkqcvswqa .gt_font_bold {
+#rxducricqb .gt_font_bold {
   font-weight: bold;
 }
 
-#itkqcvswqa .gt_font_italic {
+#rxducricqb .gt_font_italic {
   font-style: italic;
 }
 
-#itkqcvswqa .gt_super {
+#rxducricqb .gt_super {
   font-size: 65%;
 }
 
-#itkqcvswqa .gt_footnote_marks {
+#rxducricqb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#itkqcvswqa .gt_asterisk {
+#rxducricqb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#itkqcvswqa .gt_indent_1 {
+#rxducricqb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#itkqcvswqa .gt_indent_2 {
+#rxducricqb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#itkqcvswqa .gt_indent_3 {
+#rxducricqb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#itkqcvswqa .gt_indent_4 {
+#rxducricqb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#itkqcvswqa .gt_indent_5 {
+#rxducricqb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#itkqcvswqa .katex-display {
+#rxducricqb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#itkqcvswqa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#rxducricqb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
