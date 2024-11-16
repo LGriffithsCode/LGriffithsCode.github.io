@@ -255,7 +255,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>The 2010 San Diego Chargers dominated the league in yards per play differential, with a +1.44 yards per play difference between their offensive and defensive performance. The Chargers averaged 5.96 yards per offensive play (accumulating 6,343 yards on offense) while holding opponents to 4.52 yards per defensive play.</p>
+<p>The Chargers dominated the league in yards per play differential, with a +1.44 yards per play difference between their offensive and defensive performance. The Chargers averaged 5.96 yards per offensive play (accumulating 6,343 yards on offense) while holding opponents to 4.52 yards per defensive play.</p>
 <p>This differential was the largest in the NFL, significantly ahead of the second-place Pittsburgh Steelers, who posted a +1.09 differential. This Steelers team went on to play in the Super Bowl that year</p>
 <p>So how can they be so good on offense and defense yet, miss the playoffs?</p>
 <div class="cell">
@@ -334,132 +334,147 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|message: false</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#|include: false</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"image.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Saving 7 x 5 in image</code></pre>
+</div>
+</div>
 <p>The answer lies in their awful punting. The Chargers averaged just 33.96 net yards per punt ranking dead last in the NFL. On top of that they were 6 yards under the league average.</p>
 <p>Not only was their average punting yards low, but their ability to pin their opponents behind the 20-yard line was equally bad, with only a 23.21%. Making things worse, they led the league with a 16.07% touchback rate, consistently giving up opportunities to pin opponents deep in their own territory.</p>
 <p>To fully understand the impact of these struggles, we need to examine how the poor touchback rate and inability to pin opponents inside the 20-yard line contributed to their field position disadvantage.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|message: false</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#|include: True</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>punting_data <span class="ot">&lt;-</span> X2010Punting <span class="sc">|&gt;</span> </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Return_Yards_Given_Up =</span> RetYds</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>chargers_data <span class="ot">&lt;-</span> punting_data <span class="sc">|&gt;</span> </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(Tm <span class="sc">==</span> <span class="st">"San Diego Chargers"</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_bar</span>(</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> punting_data,</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Tm, Return_Yards_Given_Up), <span class="at">y =</span> Return_Yards_Given_Up), </span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"gray"</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> chargers_data, </span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Tm, Return_Yards_Given_Up), <span class="at">y =</span> Return_Yards_Given_Up), </span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"royalblue"</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"The Chargers' Struggles with Punt Coverage"</span>,</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"How the Chargers' opponent return yards allowed compare to other NFL teams."</span>,</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Team"</span>,</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Punt Yards - Return Yards"</span>,</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"By: Logan Griffiths | Data Source: NFLVerse"</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span>,</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"white"</span>),</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|message: false</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#|include: True</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>punting_data <span class="ot">&lt;-</span> X2010Punting <span class="sc">|&gt;</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Return_Yards_Given_Up =</span> RetYds</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>chargers_data <span class="ot">&lt;-</span> punting_data <span class="sc">|&gt;</span> </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(Tm <span class="sc">==</span> <span class="st">"San Diego Chargers"</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_bar</span>(</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> punting_data,</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Tm, Return_Yards_Given_Up), <span class="at">y =</span> Return_Yards_Given_Up), </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"gray"</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> chargers_data, </span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Tm, Return_Yards_Given_Up), <span class="at">y =</span> Return_Yards_Given_Up), </span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"royalblue"</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"The Chargers' Struggles with Punt Coverage"</span>,</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"How the Chargers' opponent return yards allowed compare to other NFL teams."</span>,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Team"</span>,</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Punt Yards - Return Yards"</span>,</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"By: Logan Griffiths | Data Source: NFLVerse"</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span>,</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"white"</span>),</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Despite punting only 56 times (the third-fewest attempts) the Chargers still gave up 538 return yards, the fourth-most in the league. This lackluster performance</p>
+<p>Despite punting only 56 times (the third-fewest attempts) the Chargers still gave up 538 return yards, the fifth-most in the league. The only way that the Chargers could effectively stop their opponent from returning a punt deep was by getting touch backs.Even more concerning they, had four blocked punts, while no other team had more than two; making up 30% of the blocked punts that year.</p>
+<p>So truly what could have been their record if it wasn’t for their awful punting?</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Also note for Collin Berke, I was getting weird formatting when I was exporting this CSV from Sports Reference so I decided to just manually import everything myself because it just became easier. </span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>chargers_schedule <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Week =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">17</span>),</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">H_or_A =</span> <span class="fu">c</span>(<span class="st">"Away"</span>, <span class="st">"Home"</span>, <span class="st">"Away"</span>, <span class="st">"Home"</span>, <span class="st">"Away"</span>, <span class="st">"Home"</span>, <span class="st">"Home"</span>, <span class="st">"Away"</span>, <span class="st">"Home"</span>, <span class="st">"Away"</span>, <span class="st">"Home"</span>, <span class="st">"Away"</span>, <span class="st">"Home"</span>, <span class="st">"Away"</span>, <span class="st">"Home"</span>, <span class="st">"Away"</span>, <span class="st">"Home"</span>),</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Opponent =</span> <span class="fu">c</span>(<span class="st">"Kansas City Chiefs"</span>, <span class="st">"Jacksonville Jaguars"</span>, <span class="st">"Seattle Seahawks"</span>, </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Arizona Cardinals"</span>, <span class="st">"Oakland Raiders"</span>, <span class="st">"St. Louis Rams"</span>, </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>               <span class="st">"New England Patriots"</span>, <span class="st">"Tennessee Titans"</span>, <span class="st">"Houston Texans"</span>, </span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Denver Broncos"</span>, <span class="st">"Indianapolis Colts"</span>, <span class="st">"Oakland Raiders"</span>, </span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Kansas City Chiefs"</span>, <span class="st">"San Francisco 49ers"</span>, <span class="st">"Cincinnati Bengals"</span>, </span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Denver Broncos"</span>, <span class="st">"Tennessee Titans"</span>),</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">Chargers =</span> <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">38</span>, <span class="dv">20</span>, <span class="dv">41</span>, <span class="dv">27</span>, <span class="dv">17</span>, <span class="dv">23</span>, <span class="dv">33</span>, <span class="dv">29</span>, <span class="dv">35</span>, <span class="dv">36</span>, <span class="dv">13</span>, <span class="dv">31</span>, <span class="dv">34</span>, <span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">23</span>),</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">Opponent_Score =</span> <span class="fu">c</span>(<span class="dv">21</span>, <span class="dv">13</span>, <span class="dv">27</span>, <span class="dv">10</span>, <span class="dv">35</span>, <span class="dv">20</span>, <span class="dv">27</span>, <span class="dv">25</span>, <span class="dv">23</span>, <span class="dv">14</span>, <span class="dv">14</span>, <span class="dv">28</span>, <span class="dv">0</span>, <span class="dv">7</span>, <span class="dv">34</span>, <span class="dv">23</span>, <span class="dv">21</span>),</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">Rec =</span> <span class="fu">c</span>(<span class="st">"0-1"</span>, <span class="st">"1-1"</span>, <span class="st">"1-2"</span>, <span class="st">"2-2"</span>, <span class="st">"2-3"</span>, <span class="st">"2-4"</span>, <span class="st">"3-4"</span>, <span class="st">"3-5"</span>, <span class="st">"4-5"</span>, <span class="st">"4-6"</span>, <span class="st">"5-6"</span>, <span class="st">"5-7"</span>, <span class="st">"6-7"</span>, <span class="st">"6-8"</span>, <span class="st">"7-8"</span>, <span class="st">"7-9"</span>, <span class="st">"8-9"</span>)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>chargers_schedule <span class="ot">&lt;-</span> chargers_schedule <span class="sc">|&gt;</span> </span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Result =</span> <span class="fu">case_when</span>(</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    Chargers <span class="sc">&gt;</span> Opponent_Score <span class="sc">~</span> <span class="st">"Win"</span>,</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    Chargers <span class="sc">&lt;</span> Opponent_Score <span class="sc">~</span> <span class="st">"Loss"</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">Point_Differential =</span> Chargers <span class="sc">-</span> Opponent_Score</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>chargers_schedule_gt <span class="ot">&lt;-</span> chargers_schedule <span class="sc">|&gt;</span> </span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"San Diego Chargers 2010 Season Schedue"</span>,</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"pending"</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">Week =</span> <span class="st">"Week"</span>,</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">H_or_A =</span> <span class="st">"Home/Away"</span>,</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">Opponent =</span> <span class="st">"Opponent"</span>,</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">Chargers =</span> <span class="st">"Chargers Score"</span>,</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">Opponent_Score =</span> <span class="st">"Opponent Score"</span>,</span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">Result =</span> <span class="st">"Result"</span>,</span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">Rec =</span> <span class="st">"Record"</span>,</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">Point_Differential =</span> <span class="st">"Point Differential"</span></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="fu">md</span>(<span class="st">"By: Logan Griffiths |Source: [Sports Reference](https://www.pro-football-reference.com/teams/sdg/2010.htm)"</span>)</span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a> <span class="fu">tab_style</span>(</span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>  <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"green3"</span>),</span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>  <span class="at">locations =</span> <span class="fu">cells_body</span>(<span class="at">columns =</span> <span class="st">"Result"</span>, <span class="at">rows =</span> Result <span class="sc">==</span> <span class="st">"Win"</span>)</span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_style</span>(</span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>  <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"red3"</span>),</span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>  <span class="at">locations =</span> <span class="fu">cells_body</span>(<span class="at">columns =</span> <span class="st">"Result"</span>, <span class="at">rows =</span> Result <span class="sc">==</span> <span class="st">"Loss"</span>)</span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>chargers_schedule_gt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Also note for Collin Berke, I was getting weird formatting when I was exporting this CSV from Sports Reference so I decided to just manually import everything myself because it just became easier. </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>chargers_schedule <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Week =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">17</span>),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">H_or_A =</span> <span class="fu">c</span>(<span class="st">"Away"</span>, <span class="st">"Home"</span>, <span class="st">"Away"</span>, <span class="st">"Home"</span>, <span class="st">"Away"</span>, <span class="st">"Home"</span>, <span class="st">"Home"</span>, <span class="st">"Away"</span>, <span class="st">"Home"</span>, <span class="st">"Bye"</span>, </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Home"</span>, <span class="st">"Away"</span>, <span class="st">"Home"</span>, <span class="st">"Away"</span>, <span class="st">"Home"</span>, <span class="st">"Away"</span>, <span class="st">"Home"</span>),</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Opponent =</span> <span class="fu">c</span>(<span class="st">"Kansas City Chiefs"</span>, <span class="st">"Jacksonville Jaguars"</span>, <span class="st">"Seattle Seahawks"</span>, </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Arizona Cardinals"</span>, <span class="st">"Oakland Raiders"</span>, <span class="st">"St. Louis Rams"</span>, </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>               <span class="st">"New England Patriots"</span>, <span class="st">"Tennessee Titans"</span>, <span class="st">"Houston Texans"</span>, <span class="st">"Bye"</span>, </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Denver Broncos"</span>, <span class="st">"Indianapolis Colts"</span>, <span class="st">"Oakland Raiders"</span>, </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Kansas City Chiefs"</span>, <span class="st">"San Francisco 49ers"</span>, <span class="st">"Cincinnati Bengals"</span>, </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Denver Broncos"</span>),</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">Chargers =</span> <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">38</span>, <span class="dv">20</span>, <span class="dv">41</span>, <span class="dv">27</span>, <span class="dv">17</span>, <span class="dv">23</span>, <span class="dv">33</span>, <span class="dv">29</span>, <span class="cn">NA</span>, </span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>               <span class="dv">35</span>, <span class="dv">36</span>, <span class="dv">13</span>, <span class="dv">31</span>, <span class="dv">34</span>, <span class="dv">20</span>, <span class="dv">23</span>),</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">Opponent_Score =</span> <span class="fu">c</span>(<span class="dv">21</span>, <span class="dv">13</span>, <span class="dv">27</span>, <span class="dv">10</span>, <span class="dv">35</span>, <span class="dv">20</span>, <span class="dv">27</span>, <span class="dv">25</span>, <span class="dv">23</span>, <span class="cn">NA</span>, </span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">14</span>, <span class="dv">14</span>, <span class="dv">28</span>, <span class="dv">0</span>, <span class="dv">7</span>, <span class="dv">34</span>, <span class="dv">21</span>),</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">Rec =</span> <span class="fu">c</span>(<span class="st">"0-1"</span>, <span class="st">"1-1"</span>, <span class="st">"1-2"</span>, <span class="st">"2-2"</span>, <span class="st">"2-3"</span>, <span class="st">"2-4"</span>, <span class="st">"3-4"</span>, <span class="st">"4-4"</span>, <span class="st">"5-4"</span>, <span class="st">"5-4"</span>, </span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>          <span class="st">"6-4"</span>, <span class="st">"7-4"</span>, <span class="st">"7-5"</span>, <span class="st">"8-5"</span>, <span class="st">"9-5"</span>, <span class="st">"9-6"</span>, <span class="st">"9-7"</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>chargers_schedule <span class="ot">&lt;-</span> chargers_schedule <span class="sc">|&gt;</span> </span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">Result =</span> <span class="fu">case_when</span>(</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>      Chargers <span class="sc">&gt;</span> Opponent_Score <span class="sc">~</span> <span class="st">"Win"</span>,</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>      Chargers <span class="sc">&lt;</span> Opponent_Score <span class="sc">~</span> <span class="st">"Loss"</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">Point_Differential =</span> Chargers <span class="sc">-</span> Opponent_Score</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>chargers_schedule_gt <span class="ot">&lt;-</span> chargers_schedule <span class="sc">|&gt;</span> </span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">" Chargers Lost  Because of Bad Punting"</span> ,</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Showing which games were strictly decided because of their awful special teams units. "</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">Week =</span> <span class="st">"Week"</span>,</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">H_or_A =</span> <span class="st">"Home/Away"</span>,</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">Opponent =</span> <span class="st">"Opponent"</span>,</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">Chargers =</span> <span class="st">"Chargers Score"</span>,</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">Opponent_Score =</span> <span class="st">"Opponent Score"</span>,</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">Result =</span> <span class="st">"Result"</span>,</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">Rec =</span> <span class="st">"Record"</span>,</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">Point_Differential =</span> <span class="st">"Point Differential"</span></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="fu">md</span>(<span class="st">"By: Logan Griffiths |Source: [Sports Reference](https://www.pro-football-reference.com/teams/sdg/2010.htm)"</span>)</span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_style</span>(</span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">list</span>(</span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="st">"red"</span>)</span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(<span class="at">rows =</span> Week <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>))</span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>chargers_schedule_gt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="erdvmsbrwn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#erdvmsbrwn table {
+<div id="lwsxgagazy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lwsxgagazy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#erdvmsbrwn thead, #erdvmsbrwn tbody, #erdvmsbrwn tfoot, #erdvmsbrwn tr, #erdvmsbrwn td, #erdvmsbrwn th {
+#lwsxgagazy thead, #lwsxgagazy tbody, #lwsxgagazy tfoot, #lwsxgagazy tr, #lwsxgagazy td, #lwsxgagazy th {
   border-style: none;
 }
 
-#erdvmsbrwn p {
+#lwsxgagazy p {
   margin: 0;
   padding: 0;
 }
 
-#erdvmsbrwn .gt_table {
+#lwsxgagazy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -485,12 +500,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#erdvmsbrwn .gt_caption {
+#lwsxgagazy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#erdvmsbrwn .gt_title {
+#lwsxgagazy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -502,7 +517,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#erdvmsbrwn .gt_subtitle {
+#lwsxgagazy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -514,7 +529,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#erdvmsbrwn .gt_heading {
+#lwsxgagazy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -526,13 +541,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#erdvmsbrwn .gt_bottom_border {
+#lwsxgagazy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#erdvmsbrwn .gt_col_headings {
+#lwsxgagazy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -547,7 +562,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#erdvmsbrwn .gt_col_heading {
+#lwsxgagazy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -567,7 +582,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#erdvmsbrwn .gt_column_spanner_outer {
+#lwsxgagazy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -579,15 +594,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#erdvmsbrwn .gt_column_spanner_outer:first-child {
+#lwsxgagazy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#erdvmsbrwn .gt_column_spanner_outer:last-child {
+#lwsxgagazy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#erdvmsbrwn .gt_column_spanner {
+#lwsxgagazy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -599,11 +614,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#erdvmsbrwn .gt_spanner_row {
+#lwsxgagazy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#erdvmsbrwn .gt_group_heading {
+#lwsxgagazy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -629,7 +644,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#erdvmsbrwn .gt_empty_group_heading {
+#lwsxgagazy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -644,15 +659,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#erdvmsbrwn .gt_from_md > :first-child {
+#lwsxgagazy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#erdvmsbrwn .gt_from_md > :last-child {
+#lwsxgagazy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#erdvmsbrwn .gt_row {
+#lwsxgagazy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -671,7 +686,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#erdvmsbrwn .gt_stub {
+#lwsxgagazy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -684,7 +699,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#erdvmsbrwn .gt_stub_row_group {
+#lwsxgagazy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -698,15 +713,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#erdvmsbrwn .gt_row_group_first td {
+#lwsxgagazy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#erdvmsbrwn .gt_row_group_first th {
+#lwsxgagazy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#erdvmsbrwn .gt_summary_row {
+#lwsxgagazy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -716,16 +731,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#erdvmsbrwn .gt_first_summary_row {
+#lwsxgagazy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#erdvmsbrwn .gt_first_summary_row.thick {
+#lwsxgagazy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#erdvmsbrwn .gt_last_summary_row {
+#lwsxgagazy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -735,7 +750,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#erdvmsbrwn .gt_grand_summary_row {
+#lwsxgagazy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -745,7 +760,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#erdvmsbrwn .gt_first_grand_summary_row {
+#lwsxgagazy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -755,7 +770,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#erdvmsbrwn .gt_last_grand_summary_row_top {
+#lwsxgagazy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -765,11 +780,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#erdvmsbrwn .gt_striped {
+#lwsxgagazy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#erdvmsbrwn .gt_table_body {
+#lwsxgagazy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -778,7 +793,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#erdvmsbrwn .gt_footnotes {
+#lwsxgagazy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -792,7 +807,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#erdvmsbrwn .gt_footnote {
+#lwsxgagazy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -801,7 +816,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#erdvmsbrwn .gt_sourcenotes {
+#lwsxgagazy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -815,7 +830,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#erdvmsbrwn .gt_sourcenote {
+#lwsxgagazy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -823,72 +838,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#erdvmsbrwn .gt_left {
+#lwsxgagazy .gt_left {
   text-align: left;
 }
 
-#erdvmsbrwn .gt_center {
+#lwsxgagazy .gt_center {
   text-align: center;
 }
 
-#erdvmsbrwn .gt_right {
+#lwsxgagazy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#erdvmsbrwn .gt_font_normal {
+#lwsxgagazy .gt_font_normal {
   font-weight: normal;
 }
 
-#erdvmsbrwn .gt_font_bold {
+#lwsxgagazy .gt_font_bold {
   font-weight: bold;
 }
 
-#erdvmsbrwn .gt_font_italic {
+#lwsxgagazy .gt_font_italic {
   font-style: italic;
 }
 
-#erdvmsbrwn .gt_super {
+#lwsxgagazy .gt_super {
   font-size: 65%;
 }
 
-#erdvmsbrwn .gt_footnote_marks {
+#lwsxgagazy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#erdvmsbrwn .gt_asterisk {
+#lwsxgagazy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#erdvmsbrwn .gt_indent_1 {
+#lwsxgagazy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#erdvmsbrwn .gt_indent_2 {
+#lwsxgagazy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#erdvmsbrwn .gt_indent_3 {
+#lwsxgagazy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#erdvmsbrwn .gt_indent_4 {
+#lwsxgagazy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#erdvmsbrwn .gt_indent_5 {
+#lwsxgagazy .gt_indent_5 {
   text-indent: 25px;
 }
 
-#erdvmsbrwn .katex-display {
+#lwsxgagazy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#erdvmsbrwn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#lwsxgagazy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -896,10 +911,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_heading header">
-<th colspan="8" class="gt_heading gt_title gt_font_normal">San Diego Chargers 2010 Season Schedue</th>
+<th colspan="8" class="gt_heading gt_title gt_font_normal">Chargers Lost Because of Bad Punting</th>
 </tr>
 <tr class="gt_heading even">
-<th colspan="8" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">pending</th>
+<th colspan="8" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Showing which games were strictly decided because of their awful special teams units.</th>
 </tr>
 <tr class="gt_col_headings header">
 <th id="Week" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Week</th>
@@ -914,14 +929,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_right" headers="Week">1</td>
-<td class="gt_row gt_left" headers="H_or_A">Away</td>
-<td class="gt_row gt_left" headers="Opponent">Kansas City Chiefs</td>
-<td class="gt_row gt_right" headers="Chargers">14</td>
-<td class="gt_row gt_right" headers="Opponent_Score">21</td>
-<td class="gt_row gt_right" headers="Rec">0-1</td>
-<td class="gt_row gt_left" headers="Result" style="color: #CD0000">Loss</td>
-<td class="gt_row gt_right" headers="Point_Differential">-7</td>
+<td class="gt_row gt_right" headers="Week" style="background-color: #FF0000">1</td>
+<td class="gt_row gt_left" headers="H_or_A" style="background-color: #FF0000">Away</td>
+<td class="gt_row gt_left" headers="Opponent" style="background-color: #FF0000">Kansas City Chiefs</td>
+<td class="gt_row gt_right" headers="Chargers" style="background-color: #FF0000">14</td>
+<td class="gt_row gt_right" headers="Opponent_Score" style="background-color: #FF0000">21</td>
+<td class="gt_row gt_right" headers="Rec" style="background-color: #FF0000">0-1</td>
+<td class="gt_row gt_left" headers="Result" style="background-color: #FF0000">Loss</td>
+<td class="gt_row gt_right" headers="Point_Differential" style="background-color: #FF0000">-7</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Week">2</td>
@@ -930,18 +945,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td class="gt_row gt_right" headers="Chargers">38</td>
 <td class="gt_row gt_right" headers="Opponent_Score">13</td>
 <td class="gt_row gt_right" headers="Rec">1-1</td>
-<td class="gt_row gt_left" headers="Result" style="color: #00CD00">Win</td>
+<td class="gt_row gt_left" headers="Result">Win</td>
 <td class="gt_row gt_right" headers="Point_Differential">25</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_right" headers="Week">3</td>
-<td class="gt_row gt_left" headers="H_or_A">Away</td>
-<td class="gt_row gt_left" headers="Opponent">Seattle Seahawks</td>
-<td class="gt_row gt_right" headers="Chargers">20</td>
-<td class="gt_row gt_right" headers="Opponent_Score">27</td>
-<td class="gt_row gt_right" headers="Rec">1-2</td>
-<td class="gt_row gt_left" headers="Result" style="color: #CD0000">Loss</td>
-<td class="gt_row gt_right" headers="Point_Differential">-7</td>
+<td class="gt_row gt_right" headers="Week" style="background-color: #FF0000">3</td>
+<td class="gt_row gt_left" headers="H_or_A" style="background-color: #FF0000">Away</td>
+<td class="gt_row gt_left" headers="Opponent" style="background-color: #FF0000">Seattle Seahawks</td>
+<td class="gt_row gt_right" headers="Chargers" style="background-color: #FF0000">20</td>
+<td class="gt_row gt_right" headers="Opponent_Score" style="background-color: #FF0000">27</td>
+<td class="gt_row gt_right" headers="Rec" style="background-color: #FF0000">1-2</td>
+<td class="gt_row gt_left" headers="Result" style="background-color: #FF0000">Loss</td>
+<td class="gt_row gt_right" headers="Point_Differential" style="background-color: #FF0000">-7</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Week">4</td>
@@ -950,18 +965,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td class="gt_row gt_right" headers="Chargers">41</td>
 <td class="gt_row gt_right" headers="Opponent_Score">10</td>
 <td class="gt_row gt_right" headers="Rec">2-2</td>
-<td class="gt_row gt_left" headers="Result" style="color: #00CD00">Win</td>
+<td class="gt_row gt_left" headers="Result">Win</td>
 <td class="gt_row gt_right" headers="Point_Differential">31</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_right" headers="Week">5</td>
-<td class="gt_row gt_left" headers="H_or_A">Away</td>
-<td class="gt_row gt_left" headers="Opponent">Oakland Raiders</td>
-<td class="gt_row gt_right" headers="Chargers">27</td>
-<td class="gt_row gt_right" headers="Opponent_Score">35</td>
-<td class="gt_row gt_right" headers="Rec">2-3</td>
-<td class="gt_row gt_left" headers="Result" style="color: #CD0000">Loss</td>
-<td class="gt_row gt_right" headers="Point_Differential">-8</td>
+<td class="gt_row gt_right" headers="Week" style="background-color: #FF0000">5</td>
+<td class="gt_row gt_left" headers="H_or_A" style="background-color: #FF0000">Away</td>
+<td class="gt_row gt_left" headers="Opponent" style="background-color: #FF0000">Oakland Raiders</td>
+<td class="gt_row gt_right" headers="Chargers" style="background-color: #FF0000">27</td>
+<td class="gt_row gt_right" headers="Opponent_Score" style="background-color: #FF0000">35</td>
+<td class="gt_row gt_right" headers="Rec" style="background-color: #FF0000">2-3</td>
+<td class="gt_row gt_left" headers="Result" style="background-color: #FF0000">Loss</td>
+<td class="gt_row gt_right" headers="Point_Differential" style="background-color: #FF0000">-8</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Week">6</td>
@@ -970,7 +985,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td class="gt_row gt_right" headers="Chargers">17</td>
 <td class="gt_row gt_right" headers="Opponent_Score">20</td>
 <td class="gt_row gt_right" headers="Rec">2-4</td>
-<td class="gt_row gt_left" headers="Result" style="color: #CD0000">Loss</td>
+<td class="gt_row gt_left" headers="Result">Loss</td>
 <td class="gt_row gt_right" headers="Point_Differential">-3</td>
 </tr>
 <tr class="odd">
@@ -980,7 +995,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td class="gt_row gt_right" headers="Chargers">23</td>
 <td class="gt_row gt_right" headers="Opponent_Score">27</td>
 <td class="gt_row gt_right" headers="Rec">3-4</td>
-<td class="gt_row gt_left" headers="Result" style="color: #CD0000">Loss</td>
+<td class="gt_row gt_left" headers="Result">Loss</td>
 <td class="gt_row gt_right" headers="Point_Differential">-4</td>
 </tr>
 <tr class="even">
@@ -989,8 +1004,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td class="gt_row gt_left" headers="Opponent">Tennessee Titans</td>
 <td class="gt_row gt_right" headers="Chargers">33</td>
 <td class="gt_row gt_right" headers="Opponent_Score">25</td>
-<td class="gt_row gt_right" headers="Rec">3-5</td>
-<td class="gt_row gt_left" headers="Result" style="color: #00CD00">Win</td>
+<td class="gt_row gt_right" headers="Rec">4-4</td>
+<td class="gt_row gt_left" headers="Result">Win</td>
 <td class="gt_row gt_right" headers="Point_Differential">8</td>
 </tr>
 <tr class="odd">
@@ -999,88 +1014,88 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td class="gt_row gt_left" headers="Opponent">Houston Texans</td>
 <td class="gt_row gt_right" headers="Chargers">29</td>
 <td class="gt_row gt_right" headers="Opponent_Score">23</td>
-<td class="gt_row gt_right" headers="Rec">4-5</td>
-<td class="gt_row gt_left" headers="Result" style="color: #00CD00">Win</td>
+<td class="gt_row gt_right" headers="Rec">5-4</td>
+<td class="gt_row gt_left" headers="Result">Win</td>
 <td class="gt_row gt_right" headers="Point_Differential">6</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Week">10</td>
-<td class="gt_row gt_left" headers="H_or_A">Away</td>
-<td class="gt_row gt_left" headers="Opponent">Denver Broncos</td>
-<td class="gt_row gt_right" headers="Chargers">35</td>
-<td class="gt_row gt_right" headers="Opponent_Score">14</td>
-<td class="gt_row gt_right" headers="Rec">4-6</td>
-<td class="gt_row gt_left" headers="Result" style="color: #00CD00">Win</td>
-<td class="gt_row gt_right" headers="Point_Differential">21</td>
+<td class="gt_row gt_left" headers="H_or_A">Bye</td>
+<td class="gt_row gt_left" headers="Opponent">Bye</td>
+<td class="gt_row gt_right" headers="Chargers">NA</td>
+<td class="gt_row gt_right" headers="Opponent_Score">NA</td>
+<td class="gt_row gt_right" headers="Rec">5-4</td>
+<td class="gt_row gt_left" headers="Result">NA</td>
+<td class="gt_row gt_right" headers="Point_Differential">NA</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_right" headers="Week">11</td>
 <td class="gt_row gt_left" headers="H_or_A">Home</td>
-<td class="gt_row gt_left" headers="Opponent">Indianapolis Colts</td>
-<td class="gt_row gt_right" headers="Chargers">36</td>
+<td class="gt_row gt_left" headers="Opponent">Denver Broncos</td>
+<td class="gt_row gt_right" headers="Chargers">35</td>
 <td class="gt_row gt_right" headers="Opponent_Score">14</td>
-<td class="gt_row gt_right" headers="Rec">5-6</td>
-<td class="gt_row gt_left" headers="Result" style="color: #00CD00">Win</td>
-<td class="gt_row gt_right" headers="Point_Differential">22</td>
+<td class="gt_row gt_right" headers="Rec">6-4</td>
+<td class="gt_row gt_left" headers="Result">Win</td>
+<td class="gt_row gt_right" headers="Point_Differential">21</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Week">12</td>
 <td class="gt_row gt_left" headers="H_or_A">Away</td>
-<td class="gt_row gt_left" headers="Opponent">Oakland Raiders</td>
-<td class="gt_row gt_right" headers="Chargers">13</td>
-<td class="gt_row gt_right" headers="Opponent_Score">28</td>
-<td class="gt_row gt_right" headers="Rec">5-7</td>
-<td class="gt_row gt_left" headers="Result" style="color: #CD0000">Loss</td>
-<td class="gt_row gt_right" headers="Point_Differential">-15</td>
+<td class="gt_row gt_left" headers="Opponent">Indianapolis Colts</td>
+<td class="gt_row gt_right" headers="Chargers">36</td>
+<td class="gt_row gt_right" headers="Opponent_Score">14</td>
+<td class="gt_row gt_right" headers="Rec">7-4</td>
+<td class="gt_row gt_left" headers="Result">Win</td>
+<td class="gt_row gt_right" headers="Point_Differential">22</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_right" headers="Week">13</td>
 <td class="gt_row gt_left" headers="H_or_A">Home</td>
-<td class="gt_row gt_left" headers="Opponent">Kansas City Chiefs</td>
-<td class="gt_row gt_right" headers="Chargers">31</td>
-<td class="gt_row gt_right" headers="Opponent_Score">0</td>
-<td class="gt_row gt_right" headers="Rec">6-7</td>
-<td class="gt_row gt_left" headers="Result" style="color: #00CD00">Win</td>
-<td class="gt_row gt_right" headers="Point_Differential">31</td>
+<td class="gt_row gt_left" headers="Opponent">Oakland Raiders</td>
+<td class="gt_row gt_right" headers="Chargers">13</td>
+<td class="gt_row gt_right" headers="Opponent_Score">28</td>
+<td class="gt_row gt_right" headers="Rec">7-5</td>
+<td class="gt_row gt_left" headers="Result">Loss</td>
+<td class="gt_row gt_right" headers="Point_Differential">-15</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Week">14</td>
 <td class="gt_row gt_left" headers="H_or_A">Away</td>
-<td class="gt_row gt_left" headers="Opponent">San Francisco 49ers</td>
-<td class="gt_row gt_right" headers="Chargers">34</td>
-<td class="gt_row gt_right" headers="Opponent_Score">7</td>
-<td class="gt_row gt_right" headers="Rec">6-8</td>
-<td class="gt_row gt_left" headers="Result" style="color: #00CD00">Win</td>
-<td class="gt_row gt_right" headers="Point_Differential">27</td>
+<td class="gt_row gt_left" headers="Opponent">Kansas City Chiefs</td>
+<td class="gt_row gt_right" headers="Chargers">31</td>
+<td class="gt_row gt_right" headers="Opponent_Score">0</td>
+<td class="gt_row gt_right" headers="Rec">8-5</td>
+<td class="gt_row gt_left" headers="Result">Win</td>
+<td class="gt_row gt_right" headers="Point_Differential">31</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_right" headers="Week">15</td>
 <td class="gt_row gt_left" headers="H_or_A">Home</td>
-<td class="gt_row gt_left" headers="Opponent">Cincinnati Bengals</td>
-<td class="gt_row gt_right" headers="Chargers">20</td>
-<td class="gt_row gt_right" headers="Opponent_Score">34</td>
-<td class="gt_row gt_right" headers="Rec">7-8</td>
-<td class="gt_row gt_left" headers="Result" style="color: #CD0000">Loss</td>
-<td class="gt_row gt_right" headers="Point_Differential">-14</td>
+<td class="gt_row gt_left" headers="Opponent">San Francisco 49ers</td>
+<td class="gt_row gt_right" headers="Chargers">34</td>
+<td class="gt_row gt_right" headers="Opponent_Score">7</td>
+<td class="gt_row gt_right" headers="Rec">9-5</td>
+<td class="gt_row gt_left" headers="Result">Win</td>
+<td class="gt_row gt_right" headers="Point_Differential">27</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Week">16</td>
 <td class="gt_row gt_left" headers="H_or_A">Away</td>
-<td class="gt_row gt_left" headers="Opponent">Denver Broncos</td>
+<td class="gt_row gt_left" headers="Opponent">Cincinnati Bengals</td>
 <td class="gt_row gt_right" headers="Chargers">20</td>
-<td class="gt_row gt_right" headers="Opponent_Score">23</td>
-<td class="gt_row gt_right" headers="Rec">7-9</td>
-<td class="gt_row gt_left" headers="Result" style="color: #CD0000">Loss</td>
-<td class="gt_row gt_right" headers="Point_Differential">-3</td>
+<td class="gt_row gt_right" headers="Opponent_Score">34</td>
+<td class="gt_row gt_right" headers="Rec">9-6</td>
+<td class="gt_row gt_left" headers="Result">Loss</td>
+<td class="gt_row gt_right" headers="Point_Differential">-14</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_right" headers="Week">17</td>
 <td class="gt_row gt_left" headers="H_or_A">Home</td>
-<td class="gt_row gt_left" headers="Opponent">Tennessee Titans</td>
+<td class="gt_row gt_left" headers="Opponent">Denver Broncos</td>
 <td class="gt_row gt_right" headers="Chargers">23</td>
 <td class="gt_row gt_right" headers="Opponent_Score">21</td>
-<td class="gt_row gt_right" headers="Rec">8-9</td>
-<td class="gt_row gt_left" headers="Result" style="color: #00CD00">Win</td>
+<td class="gt_row gt_right" headers="Rec">9-7</td>
+<td class="gt_row gt_left" headers="Result">Win</td>
 <td class="gt_row gt_right" headers="Point_Differential">2</td>
 </tr>
 </tbody><tfoot class="gt_sourcenotes">
@@ -1094,6 +1109,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p>The 2010 Chargers’ season presents us with a “what-if” scenario that truly shows the impact of having an awful special teams unit.</p>
+<p>The Week 1 loss to the Chiefs (14-21) was simply due to a punt return touchdown, giving Kansas City the free seven-point win. Week 3’s defeat in Seattle (20-27) had another returned touchdown that gave the Seahawks a seven-point win. However, the most upsetting example came in Week 5 against the Oakland Raiders, were two blocked punts (one resulting in a safety and another returned for a touchdown) creating a add nine-point deficit in what ended as a 27-35 loss.</p>
+<p>If the Chargers had a special teams unit that was serviceable or just the league-average, they could have reasonably won at least two or three additional games, potentially converting their 9-7 record to a 11-5 or 12-4 record.</p>
+<p>The difference between the Chargers making the playoffs and not making the playoffs was simply their entire scheme when it came to their punting.</p>
 
 
 
